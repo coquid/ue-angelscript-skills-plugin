@@ -1,0 +1,20 @@
+{
+	"name": "ue-angelscript-skills-for-codex",
+	"interface": {
+		"displayName": "UE AngelScript Skills"
+	},
+	"plugins": [
+		{
+			"name": "ue-angelscript-skills-for-codex",
+			"source": {
+				"source": "local",
+				"path": "./"
+			},
+			"policy": {
+				"installation": "AVAILABLE",
+				"authentication": "ON_INSTALL"
+			},
+			"category": "Developer Tools"
+		}
+	]
+}

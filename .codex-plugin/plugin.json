@@ -1,0 +1,27 @@
+{
+	"name": "ue-angelscript-skills-for-codex",
+	"version": "0.1.0",
+	"description": "AngelScript gameplay, tests and EmmsUI",
+	"author": {
+		"name": "coquid",
+		"url": "https://github.com/coquid"
+	},
+	"repository": "https://github.com/coquid/ue-angelscript-skills-for-codex-plugins",
+	"license": "MIT",
+	"skills": "./skills/",
+	"requires_local_executor": true,
+	"interface": {
+		"displayName": "UE AngelScript Skills",
+		"shortDescription": "AngelScript gameplay, tests and EmmsUI",
+		"longDescription": "Develop AngelScript gameplay, exercise world and PIE integration tests, and build EmmsUI developer interfaces using the target project's bindings.",
+		"developerName": "coquid",
+		"category": "Developer Tools",
+		"capabilities": [
+			"Read",
+			"Write"
+		],
+		"defaultPrompt": [
+			"Find the AngelScript bindings for the gameplay API in this project."
+		]
+	}
+}
