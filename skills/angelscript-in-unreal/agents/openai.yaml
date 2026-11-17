@@ -1,4 +1,4 @@
 interface:
   display_name: "AngelScript in Unreal"
-  short_description: "Find and verify Unreal AngelScript APIs"
-  default_prompt: "Use $angelscript-in-unreal to implement this AngelScript change using the project's actual bindings and verify the result."
+  short_description: "Use Unreal AngelScript syntax and verified engine APIs"
+  default_prompt: "Use $angelscript-in-unreal to implement this change with the relevant syntax reference and the project's actual bindings, then verify the result."
