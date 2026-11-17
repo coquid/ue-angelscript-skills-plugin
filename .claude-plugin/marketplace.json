@@ -1,0 +1,16 @@
+{
+	"name": "coquid-as-skills",
+	"owner": {
+		"name": "coquid"
+	},
+	"metadata": {
+		"description": "Hazelight AngelScript skills for Unreal Engine"
+	},
+	"plugins": [
+		{
+			"name": "ue-angelscript-skills",
+			"source": "./",
+			"description": "AngelScript gameplay, tests and EmmsUI"
+		}
+	]
+}

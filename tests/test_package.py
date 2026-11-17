@@ -22,8 +22,9 @@ class PackageTests(unittest.TestCase):
                 self.assertIn("LICENSE", names)
                 self.assertFalse(any(name.startswith("scripts/") for name in names))
                 self.assertEqual(
-                    {Path(n).parent.name for n in names if n.endswith("/SKILL.md")},
-                    {"angelscript-in-unreal", "as-integration-tests", "emmsui"},
+                    sorted(n for n in names if n.endswith("/SKILL.md")),
+                    ["skills/angelscript-in-unreal/SKILL.md", "skills/as-integration-tests/SKILL.md",
+                     "skills/emmsui/SKILL.md"],
                 )
                 for name in names:
                     self.assertFalse(name.startswith((".git/", ".venv/", ".test-artifacts/", "tests/", "hooks/")))

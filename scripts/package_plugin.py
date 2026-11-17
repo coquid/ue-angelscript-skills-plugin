@@ -13,6 +13,7 @@ from validate_plugin import ROOT, SKILL_NAMES, validate
 def package_files(root: Path) -> list[Path]:
     names = [
         "plugin.json", ".codex-plugin/plugin.json", ".agents/plugins/marketplace.json",
+        ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json",
         "LICENSE", "UPSTREAM.md", "README.md",
         "UPSTREAM.ko-KR.md", "README.ko-KR.md",
         "docs/VALIDATION.md", "docs/VALIDATION.ko-KR.md",

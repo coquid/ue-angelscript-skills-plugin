@@ -1,4 +1,4 @@
-name: Validate Codex plugin
+name: Validate plugin package
 on:
   push:
   pull_request:

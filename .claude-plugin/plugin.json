@@ -1,0 +1,11 @@
+{
+	"name": "ue-angelscript-skills",
+	"version": "0.3.0",
+	"description": "AngelScript gameplay, tests and EmmsUI",
+	"author": {
+		"name": "coquid",
+		"url": "https://github.com/coquid"
+	},
+	"repository": "https://github.com/coquid/ue-angelscript-skills-plugin",
+	"license": "MIT"
+}

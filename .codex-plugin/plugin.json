@@ -1,12 +1,12 @@
 {
 	"name": "ue-angelscript-skills-for-codex",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "AngelScript gameplay, tests and EmmsUI",
 	"author": {
 		"name": "coquid",
 		"url": "https://github.com/coquid"
 	},
-	"repository": "https://github.com/coquid/ue-angelscript-skills-for-codex-plugins",
+	"repository": "https://github.com/coquid/ue-angelscript-skills-plugin",
 	"license": "MIT",
 	"skills": "./skills/",
 	"requires_local_executor": true,

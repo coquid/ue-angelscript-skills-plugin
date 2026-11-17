@@ -40,9 +40,23 @@ def validate(root: Path = ROOT) -> list[str]:
         entries = marketplace["plugins"]
         if marketplace["name"] != portable["name"] or len(entries) != 1 or entries[0]["name"] != portable["name"]:
             errors.append("Marketplace must reference this plugin exactly once")
-        if entries[0]["source"] != {"source": "local", "path": "./"}:
+        elif entries[0]["source"] != {"source": "local", "path": "./"}:
             errors.append("Marketplace must resolve the package root")
-        for manifest in (extension, compatibility):
+        claude = json.loads((root / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
+        catalog = json.loads((root / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
+        for field in ("version", "author", "repository", "license"):
+            if claude[field] != portable[field]:
+                errors.append(f"Claude manifest mismatch: {field}")
+        if claude["name"] != "ue-angelscript-skills" or catalog["name"] != "coquid-as-skills":
+            errors.append("Unexpected Claude plugin or marketplace name")
+        if not catalog["owner"]["name"]:
+            errors.append("Claude marketplace requires an owner")
+        claude_entries = catalog["plugins"]
+        if len(claude_entries) != 1:
+            errors.append("Claude marketplace must list one plugin")
+        elif claude_entries[0]["name"] != claude["name"] or claude_entries[0]["source"] != "./":
+            errors.append("Claude marketplace must reference the plugin at the package root")
+        for manifest in (extension, compatibility, claude, *claude_entries):
             if any(key in manifest for key in ("hooks", "apps", "mcpServers")):
                 errors.append("Default package must not auto-register hooks or MCP connections")
     except (OSError, ValueError, KeyError, TypeError) as error:
@@ -76,7 +90,7 @@ def validate(root: Path = ROOT) -> list[str]:
                     errors.append(f"{ui_path}: default prompt must mention the skill")
         except (OSError, ValueError, TypeError, AttributeError, yaml.YAMLError) as error:
             errors.append(f"{path}: {error}")
-    for forbidden in ("hooks/hooks.json", ".claude-plugin/plugin.json", ".mcp.json", "mcp.json"):
+    for forbidden in ("hooks/hooks.json", ".mcp.json", "mcp.json"):
         if (root / forbidden).exists():
             errors.append(f"Unexpected active client configuration: {forbidden}")
     license_text = (root / "LICENSE").read_text(encoding="utf-8")
